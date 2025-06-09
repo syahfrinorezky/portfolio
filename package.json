@@ -1,0 +1,51 @@
+{
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Portfolio Web Project",
+  "homepage": "https://github.com/syahfrinorezky/portfolio#readme",
+  "bugs": {
+    "url": "https://github.com/syahfrinorezky/portfolio/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/syahfrinorezky/portfolio.git"
+  },
+  "license": "ISC",
+  "author": "syahfrinorezky",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@lottiefiles/react-lottie-player": "^3.6.0",
+    "clsx": "^2.1.1",
+    "emailjs": "^4.0.3",
+    "framer-motion": "^12.16.0",
+    "next": "15.3.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.57.0",
+    "react-hot-toast": "^2.5.2",
+    "react-icons": "^5.5.0",
+    "react-parallax-tilt": "^1.7.297",
+    "react-type-animation": "^3.2.0",
+    "swiper": "^11.2.8",
+    "zod": "^3.25.56"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.3",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
