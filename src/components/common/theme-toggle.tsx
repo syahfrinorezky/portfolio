@@ -4,7 +4,6 @@
 
 import React from "react";
 
-import { Button } from "../ui/button";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { HiMoon, HiSun } from "react-icons/hi2";
@@ -22,13 +21,12 @@ function ThemeToggle() {
   }
 
   return (
-    <Button
-      variant={"ghost"}
-      className="relative w-10 h-10 rounded-full cursor-pointer !bg-transparent"
+    <button
+      className="relative flex items-center justify-center w-10 h-10 rounded-full cursor-pointer"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
-      <HiSun className="absolute transition-all duration-300 ease-in-out rotate-0 scale-100 opacity-100 dark:rotate-90 dark:scale-0 dark:opacity-0" />
-      <HiMoon className="absolute transition-all duration-300 ease-in-out rotate-90 scale-0 opacity-0 dark:rotate-0 dark:scale-100 dark:opacity-100" />
-    </Button>
+      <HiMoon className="absolute text-xl transition-all duration-300 ease-in-out rotate-90 scale-0 opacity-0 dark:rotate-0 dark:scale-100 dark:opacity-100" />
+      <HiSun className="absolute text-xl transition-all duration-300 ease-in-out rotate-0 scale-100 opacity-100 dark:rotate-90 dark:scale-0 dark:opacity-0" />
+    </button>
   );
 }
 
