@@ -10,13 +10,23 @@ import Image from "next/image";
 import clsx from "clsx";
 
 import { AnimatePresence, motion } from "framer-motion";
+import { useScroll } from "@/hooks/useScroll";
 import { NAVIGATIONS } from "@/constants/navigations";
 import ThemeToggle from "../common/theme-toggle";
 import { HiBars3BottomRight, HiXMark } from "react-icons/hi2";
 
 function Header() {
   const pathname = usePathname();
+  const { isScrolled, handleScroll } = useScroll(100);
   const [isSlidebarOpen, setIsSlidebarOpen] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }),
+    [handleScroll];
 
   return (
     <div className="fixed top-0 w-full flex items-center z-20 bg-white shadow-md dark:bg-neutral-800 dark:shadow-none">
@@ -37,17 +47,17 @@ function Header() {
               <Link
                 href={item.href}
                 className={clsx(
-                  "flex items-center space-x-2 px-5 py-3 rounded-lg transition-colors duration-300 ease-in-out group",
+                  "flex items-center space-x-2 px-5 py-2 rounded-lg transition-colors duration-300 ease-in-out group",
                   pathname === item.href
-                    ? "bg-gray-300 dark:bg-neutral-700"
-                    : "bg-white hover:bg-gray-300 dark:bg-neutral-800 dark:hover:bg-neutral-900"
+                    ? "bg-neutral-200 dark:bg-neutral-700"
+                    : "bg-white hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-900"
                 )}>
                 <span
                   className={clsx(
                     "transition-all duration-300 ease-in-out",
                     pathname === item.href
                       ? "text-amber-400 font-medium"
-                      : "text-neutral-700 group-hover:text-neutral-800 dark:text-gray-300 dark:group-hover:text-amber-400 group-hover:font-medium"
+                      : "group-hover:text-amber-400 dark:text-gray-300 dark:group-hover:text-amber-400 group-hover:font-medium"
                   )}>
                   {item.name}
                 </span>
@@ -90,7 +100,7 @@ function Header() {
                     <ThemeToggle />
                     <button
                       type="button"
-                      className="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-300 dark:hover:bg-neutral-700 transition-colors duration-300 ease-in-out cursor-pointer group"
+                      className="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors duration-300 ease-in-out cursor-pointer group"
                       onClick={() => setIsSlidebarOpen(false)}>
                       <HiXMark
                         size={25}
@@ -108,8 +118,8 @@ function Header() {
                           className={clsx(
                             "p-4 flex items-center space-x-3 rounded-lg transition-colors duration-300 ease-in-out group",
                             pathname === item.href
-                              ? "bg-gray-300 dark:bg-neutral-700"
-                              : "bg-white hover:bg-gray-300 dark:bg-neutral-800 dark:hover:bg-neutral-900"
+                              ? "bg-neutral-200 dark:bg-neutral-700"
+                              : "bg-white hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-900"
                           )}>
                           <item.icon
                             size={22}
