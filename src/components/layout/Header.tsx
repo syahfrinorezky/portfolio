@@ -22,14 +22,17 @@ function Header() {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }),
-    [handleScroll];
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
 
   return (
-    <div className="fixed top-0 w-full flex items-center z-20 bg-white shadow-md dark:bg-neutral-800 dark:shadow-none">
+    <div
+      className={clsx(
+        "fixed top-0 w-full flex items-center z-20 shadow-md dark:shadow-none",
+        isScrolled
+          ? "bg-white/40 dark:bg-neutral-800/70 backdrop-blur-sm"
+          : "bg-white dark:bg-neutral-800"
+      )}>
       <div className="w-full flex items-center justify-between sm:container sm:mx-auto p-4 sm:py-4">
         <Link href={"/"}>
           <Image
@@ -49,7 +52,11 @@ function Header() {
                 className={clsx(
                   "flex items-center space-x-2 px-5 py-2 rounded-lg transition-colors duration-300 ease-in-out group",
                   pathname === item.href
-                    ? "bg-neutral-200 dark:bg-neutral-700"
+                    ? isScrolled
+                      ? "bg-transparent dark:bg-transparent"
+                      : "bg-neutral-200 dark:bg-neutral-700"
+                    : isScrolled
+                    ? "bg-transparent dark:bg-transparent"
                     : "bg-white hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-900"
                 )}>
                 <span
@@ -119,7 +126,7 @@ function Header() {
                             "p-4 flex items-center space-x-3 rounded-lg transition-colors duration-300 ease-in-out group",
                             pathname === item.href
                               ? "bg-neutral-200 dark:bg-neutral-700"
-                              : "bg-white hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-900"
+                              : "bg-white hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700"
                           )}>
                           <item.icon
                             size={22}
