@@ -5,6 +5,14 @@ import { poppins, montserrat } from "@/style/font";
 import clsx from "clsx";
 import { ThemeProvider } from "next-themes";
 import Header from "@/components/layout/Header";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "RinoRezky | Portofolio",
+  icons: {
+    icon: "/images/logo/yellowlogo.png",
+  },
+};
 
 export default function RootLayout({
   children,
